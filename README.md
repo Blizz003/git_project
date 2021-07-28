@@ -1,11 +1,11 @@
 ### Date Created
-The Twenty-Seventh of July, Two-Thousand-Twenty-One, Common Era
+The Twenty-Seventh of July, Two-Thousand-Twenty-One, Common Era (27/07/2021)
 
 ### Project Title
-Git & GitHub with the Bike Share Project
+Udacity Git Project
 
 ### Description
-Demonstrate competence with the use of Git and GitHub with the previously submitted Bike Share Project
+Demonstrate competence with the use of Git and GitHub
 
 ### Files Used
 .gitignore
