@@ -91,7 +91,7 @@ def get_filters():
     elif monthchoice == "all":
         displaymonth = "January to June.  (data unavailable for July to December)"
     else:
-        print("Why must you break the program :(")
+        print("You broke the program :(")
 
     if daychoice == "mon":
         daydisplay = "Monday"
@@ -110,7 +110,7 @@ def get_filters():
     elif daychoice == "all":
         daydisplay = "Everyday!"
     else:
-        print("Broken Program = Much Sad.")
+        print("You broke the program :(")
 
     print("\n" + "^*"*25)
     print("Thanks!  You have chosen:\n     CITY: " + citydisplay + "\n    MONTH: " + displaymonth + "\n      DAY: " + daydisplay)
@@ -143,7 +143,7 @@ def load_data(citychoice, monthchoice, daychoice):
     elif daychoice == "all":
         daychoice = "all"
     else:
-        print("Congratulations!  You broke the program(daychoice)!")
+        print("You broke the program :(")
 
     if monthchoice == "jan":
         monthchoice = 1
@@ -160,7 +160,7 @@ def load_data(citychoice, monthchoice, daychoice):
     elif monthchoice == "all":
         monthchoice = "all"
     else:
-        print("Congratulations!  You broke the program(monthchoice)!")
+        print("You broke the program :(")
 
 
     """
@@ -220,7 +220,7 @@ def time_stats(df):
     elif xday == 6:
         xday = "Sunday"
     else:
-        print("Congratulations!  You broke the program(dayniceread)!")
+        print("You broke the program :(")
 
     if xmonth == 1:
         xmonth = "January"
@@ -236,7 +236,7 @@ def time_stats(df):
         xmonth = "June"
 
     else:
-        print("Congratulations!  You broke the program(monthniceread)!")
+        print("You broke the program :(")
 
     #print the popular times
     print("~"*50)
@@ -287,8 +287,7 @@ def trip_duration_stats(df):
 
     print("~"*50)
     print("Total trave time: " + str(mins) + " minutes")
-    if mins == 300000:
-        print("Weird how every city's total is exactly 300000.  I spent a sad amount of time trying to debug this because it seemed really sus.")
+    
     # display mean travel time
 
     print("~"*50 + "\n")
