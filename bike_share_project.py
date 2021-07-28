@@ -112,9 +112,9 @@ def get_filters():
     else:
         print("Broken Program = Much Sad.")
 
-    print("\n" + "^*"*23)
+    print("\n" + "^*"*25)
     print("Thanks!  You have chosen:\n     CITY: " + citydisplay + "\n    MONTH: " + displaymonth + "\n      DAY: " + daydisplay)
-    print("^*"*23 + "\n")
+    print("^*"*25 + "\n")
 
     #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 001\n" + "~"*28)
     return citychoice, monthchoice, daychoice
@@ -239,14 +239,14 @@ def time_stats(df):
         print("Congratulations!  You broke the program(monthniceread)!")
 
     #print the popular times
-    print("~"*40)
+    print("~"*50)
     print("    Most popular month: ", xmonth)
     print("      Most popular day: ", xday)
     print("     Most popular hour: ", xhour, "(24hr)")
-    print("~"*40 + "\n")
-    print('-'*40)
+    print("~"*50 + "\n")
+    print('-'*50)
     print("This took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
     #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 003\n" + "~"*28)
 
@@ -256,7 +256,7 @@ def station_stats(df):
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
-    print("~"*40)
+    print("~"*50)
     # display most commonly used start station
     popss = df["Start Station"].mode()[0]
     print("The most common Start Station is: ", popss)
@@ -268,10 +268,10 @@ def station_stats(df):
     # display most frequent combination of start station and end station trip
     popcomb = df.groupby(["Start Station", "End Station"]).size().idxmax()
     print("The most frequent Start-End combination is from {} to {}.".format(popcomb[0], popcomb[1]))
-    print("~"*40 + "\n")
-    print('-'*40)
+    print("~"*50 + "\n")
+    print('-'*50)
     print("This took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
     #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 004\n" + "~"*28)
 
@@ -285,16 +285,16 @@ def trip_duration_stats(df):
     # display total travel time
     mins = df["Trip Duration"].count()
 
-    print("~"*40)
+    print("~"*50)
     print("Total trave time: " + str(mins) + " minutes")
     if mins == 300000:
         print("Weird how every city's total is exactly 300000.  I spent a sad amount of time trying to debug this because it seemed really sus.")
     # display mean travel time
 
-    print("~"*40 + "\n")
-    print('-'*40)
+    print("~"*50 + "\n")
+    print('-'*50)
     print("This took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
     #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 005\n" + "~"*28)
 
@@ -308,26 +308,26 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
-    print("~"*40)
+    print("~"*50)
     usercount = df["User Type"].value_counts()
     print(usercount)
-    print("~"*40)
+    print("~"*50)
     # Display counts of gender
 
     if citycity != "was":
         gencount = df["Gender"].value_counts()
         print(gencount)
-        print("~"*40)
+        print("~"*50)
     # Display earliest, most recent, and most common year of birth
         lst = int(df["Birth Year"].min())
         fst = int(df["Birth Year"].max())
         com = int(df["Birth Year"].mode())
         print("The youngest user was born in {}, the oldest in {}.".format(fst, lst))
         print("The most common birth year of users is {}".format(com))
-        print("~"*40)
-        print('-'*40)
+        print("~"*50)
+        print('-'*50)
         print("This took %s seconds." % (time.time() - start_time))
-        print('-'*40)
+        print('-'*50)
     elif citycity == "was":
         print("\nWashington State does not collect demographic information on its users.")
     else:
