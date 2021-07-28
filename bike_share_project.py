@@ -1,3 +1,8 @@
+"""
+Udacity Bike Share Project
+Udacity Git & GitHub Project
+"""
+
 import time
 import pandas as pd
 import numpy as np
@@ -12,6 +17,7 @@ datamonth = ["jan", "feb", "mar", "apr", "may", "jun"]
 validcity = ["chi", "new", "was"]
 validday = ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "all"]
 citycity = "initial"
+
 
 #user makes city, month and day selections
 def get_filters():
@@ -33,7 +39,6 @@ def get_filters():
     oopsmonth = "\nFor some reason that month isn't in the data.\nPlease only select a month from January to June."
 
     print('\nHello! Let\'s explore some US bikeshare data!')
-
 
     #user selects city, month and weekday
     while citychoice not in validcity:
@@ -112,6 +117,7 @@ def get_filters():
 
     return citychoice, monthchoice, daychoice
 
+
     #loads day and month into df
 def load_data(citychoice, monthchoice, daychoice):
     global validmonth
@@ -170,8 +176,8 @@ def load_data(citychoice, monthchoice, daychoice):
     if daychoice != "all":
         df = df[df["day_of_week"] == daychoice]
 
-    #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 002\n" + "~"*28)
     return df
+
 
     #dispays travel stats
 def time_stats(df):
@@ -229,7 +235,6 @@ def time_stats(df):
     print("This took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-    #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 003\n" + "~"*28)
 
     #displays station stats
 def station_stats(df):
@@ -253,7 +258,6 @@ def station_stats(df):
     print("This took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-    #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 004\n" + "~"*28)
 
     #dispays trip stats
 def trip_duration_stats(df):
@@ -274,8 +278,6 @@ def trip_duration_stats(df):
     print('-'*40)
     print("This took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
-    #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 005\n" + "~"*28)
 
 
     #displays demographic user info
@@ -312,7 +314,6 @@ def user_stats(df):
     else:
         print("This should not ever print")
 
-    #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 006\n" + "~"*28)
 
 def main():
     while True:
