@@ -21,17 +21,17 @@ def get_filters():
     global citycity
 
     #makes while loops go loopy
-    citychoice = "intial"
-    monthchoice = "initial"
-    daychoice = "initial"
+    citychoice = "none"
+    monthchoice = "none"
+    daychoice = "none"
 
     #possible errors
-    oops = "\nI'm sorry, that was an invalid entry.  Please try again\n"
+    oops = "\nInvalid entry.  Please try again\n"
     question = "\n Please input the first three letters of the {} you would like to view data for: \n{}"
     #note to self: review data BEFORE assuming things
-    oopsmonth = "\nFor some reason that month isn't in the data.\nPlease only select a month from January to June."
+    oopsmonth = "\nPlease only select a month from January to June."
 
-    print('\nHello! Let\'s explore some US bikeshare data!')
+    print('\nHello! Let\'s explore some US bikeshare data!  \nMostly though we are demonstrating Git & GitHub')
     """
     Asks user to specify a city, month, and day to analyze.
 
@@ -89,7 +89,7 @@ def get_filters():
     elif monthchoice == "jun":
         displaymonth = "June"
     elif monthchoice == "all":
-        displaymonth = "January to June.  (no data available for July to December)"
+        displaymonth = "January to June.  (data unavailable for July to December)"
     else:
         print("Why must you break the program :(")
 
@@ -259,15 +259,15 @@ def station_stats(df):
     print("~"*40)
     # display most commonly used start station
     popss = df["Start Station"].mode()[0]
-    print("The most popular Start Station is: ", popss)
+    print("The most common Start Station is: ", popss)
 
     # display most commonly used end station
     popes = df["End Station"].mode()[0]
-    print("The most popular End Station is: ", popes)
+    print("The most common End Station is: ", popes)
 
     # display most frequent combination of start station and end station trip
     popcomb = df.groupby(["Start Station", "End Station"]).size().idxmax()
-    print("The most popular Start-End combination is from {} to {}.".format(popcomb[0], popcomb[1]))
+    print("The most frequent Start-End combination is from {} to {}.".format(popcomb[0], popcomb[1]))
     print("~"*40 + "\n")
     print('-'*40)
     print("This took %s seconds." % (time.time() - start_time))
