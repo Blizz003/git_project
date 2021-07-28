@@ -27,16 +27,16 @@ def get_filters():
     global citycity
 
     #makes while loops go loopy
-    citychoice = "intial"
-    monthchoice = "initial"
-    daychoice = "initial"
+    citychoice = "none"
+    monthchoice = "none"
+    daychoice = "none"
 
     #possible errors
-    oops = "\nI'm sorry, that was an invalid entry.  Please try again\n"
+    oops = "\nInvalid entry.  Please try again\n"
     question = "\n Please input the first three letters of the {} you would like to view data for: \n{}"
 
     #note to self: review data BEFORE assuming things
-    oopsmonth = "\nFor some reason that month isn't in the data.\nPlease only select a month from January to June."
+    oopsmonth = "\nPlease only select a month from January to June."
 
     print('\nHello! Let\'s explore some US bikeshare data!')
 
@@ -88,9 +88,9 @@ def get_filters():
     elif monthchoice == "jun":
         displaymonth = "June"
     elif monthchoice == "all":
-        displaymonth = "January to June.  (no data available for July to December)"
+        displaymonth = "January to June.  (data unavailable for July to December)"
     else:
-        print("Why must you break the program :(")
+        print("You broke the program :(")
 
     if daychoice == "mon":
         daydisplay = "Monday"
@@ -109,11 +109,11 @@ def get_filters():
     elif daychoice == "all":
         daydisplay = "Everyday!"
     else:
-        print("Broken Program = Much Sad.")
+        print("You broke the program :(")
 
-    print("\n" + "^*"*23)
+    print("\n" + "^*"*25)
     print("Thanks!  You have chosen:\n     CITY: " + citydisplay + "\n    MONTH: " + displaymonth + "\n      DAY: " + daydisplay)
-    print("^*"*23 + "\n")
+    print("^*"*25 + "\n")
 
     return citychoice, monthchoice, daychoice
 
@@ -142,7 +142,7 @@ def load_data(citychoice, monthchoice, daychoice):
     elif daychoice == "all":
         daychoice = "all"
     else:
-        print("Congratulations!  You broke the program(daychoice)!")
+        print("You broke the program :(")
 
     if monthchoice == "jan":
         monthchoice = 1
@@ -159,7 +159,7 @@ def load_data(citychoice, monthchoice, daychoice):
     elif monthchoice == "all":
         monthchoice = "all"
     else:
-        print("Congratulations!  You broke the program(monthchoice)!")
+        print("You broke the program :(")
 
 
         #Load chosen csv and get month and day in new columns
@@ -207,7 +207,7 @@ def time_stats(df):
     elif xday == 6:
         xday = "Sunday"
     else:
-        print("Congratulations!  You broke the program(dayniceread)!")
+        print("You broke the program :(")
 
     if xmonth == 1:
         xmonth = "January"
@@ -223,17 +223,17 @@ def time_stats(df):
         xmonth = "June"
 
     else:
-        print("Congratulations!  You broke the program(monthniceread)!")
+        print("You broke the program :(")
 
     #print the popular times
-    print("~"*40)
+    print("~"*50)
     print("    Most popular month: ", xmonth)
     print("      Most popular day: ", xday)
     print("     Most popular hour: ", xhour, "(24hr)")
-    print("~"*40 + "\n")
-    print('-'*40)
+    print("~"*50 + "\n")
+    print('-'*50)
     print("This took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
 
     #displays station stats
@@ -241,22 +241,22 @@ def station_stats(df):
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
-    print("~"*40)
+    print("~"*50)
     # display most commonly used start station
     popss = df["Start Station"].mode()[0]
-    print("The most popular Start Station is: ", popss)
+    print("The most common Start Station is: ", popss)
 
     # display most commonly used end station
     popes = df["End Station"].mode()[0]
-    print("The most popular End Station is: ", popes)
+    print("The most common End Station is: ", popes)
 
     # display most frequent combination of start station and end station trip
     popcomb = df.groupby(["Start Station", "End Station"]).size().idxmax()
-    print("The most popular Start-End combination is from {} to {}.".format(popcomb[0], popcomb[1]))
-    print("~"*40 + "\n")
-    print('-'*40)
+    print("The most frequent Start-End combination is from {} to {}.".format(popcomb[0], popcomb[1]))
+    print("~"*50 + "\n")
+    print('-'*50)
     print("This took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
 
     #dispays trip stats
@@ -268,16 +268,15 @@ def trip_duration_stats(df):
     # display total travel time
     mins = df["Trip Duration"].count()
 
-    print("~"*40)
+    print("~"*50)
     print("Total trave time: " + str(mins) + " minutes")
-    if mins == 300000:
-        print("Weird how every city's total is exactly 300000.  I spent a sad amount of time trying to debug this because it seemed really sus.")
+
     # display mean travel time
 
-    print("~"*40 + "\n")
-    print('-'*40)
+    print("~"*50 + "\n")
+    print('-'*50)
     print("This took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-'*50)
 
 
     #displays demographic user info
@@ -289,26 +288,26 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
-    print("~"*40)
+    print("~"*50)
     usercount = df["User Type"].value_counts()
     print(usercount)
-    print("~"*40)
+    print("~"*50)
     # Display counts of gender
 
     if citycity != "was":
         gencount = df["Gender"].value_counts()
         print(gencount)
-        print("~"*40)
+        print("~"*50)
     # Display earliest, most recent, and most common year of birth
         lst = int(df["Birth Year"].min())
         fst = int(df["Birth Year"].max())
         com = int(df["Birth Year"].mode())
         print("The youngest user was born in {}, the oldest in {}.".format(fst, lst))
         print("The most common birth year of users is {}".format(com))
-        print("~"*40)
-        print('-'*40)
+        print("~"*50)
+        print('-'*50)
         print("This took %s seconds." % (time.time() - start_time))
-        print('-'*40)
+        print('-'*50)
     elif citycity == "was":
         print("\nWashington State does not collect demographic information on its users.")
     else:
