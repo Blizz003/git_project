@@ -1,13 +1,13 @@
-### Date created
+### Date Created
 The Twenty-Seventh of July, Two-Thousand-Twenty-One, Common Era
 
 ### Project Title
 Git & GitHub with the Bike Share Project
 
 ### Description
-Demonstrate competnece with the use of Git and GitHub with the previously submitted Bike Share Project
+Demonstrate competence with the use of Git and GitHub with the previously submitted Bike Share Project
 
-### Files used
+### Files Used
 .gitignore
 bike_share_project.py
 README.md
