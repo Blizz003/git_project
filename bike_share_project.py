@@ -13,7 +13,7 @@ validcity = ["chi", "new", "was"]
 validday = ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "all"]
 citycity = "initial"
 
-
+#user makes city, month and day selections
 def get_filters():
     global validmonth
     global validcity
@@ -28,20 +28,14 @@ def get_filters():
     #possible errors
     oops = "\nI'm sorry, that was an invalid entry.  Please try again\n"
     question = "\n Please input the first three letters of the {} you would like to view data for: \n{}"
+
     #note to self: review data BEFORE assuming things
     oopsmonth = "\nFor some reason that month isn't in the data.\nPlease only select a month from January to June."
 
     print('\nHello! Let\'s explore some US bikeshare data!')
-    """
-    Asks user to specify a city, month, and day to analyze.
-
-    Returns:
-        (str) citychoice - first three letters of city to anlayze
-        (str) monthchoice - first three letters of month to analyze (or all)
-        (str) daychoice - first three letters of day to analyze (or all)
-    """
 
 
+    #user selects city, month and weekday
     while citychoice not in validcity:
         citychoice = input(question.format("city", "Chicago, New York or Washington: "))
         citycity = citychoice
@@ -116,10 +110,9 @@ def get_filters():
     print("Thanks!  You have chosen:\n     CITY: " + citydisplay + "\n    MONTH: " + displaymonth + "\n      DAY: " + daydisplay)
     print("^*"*23 + "\n")
 
-    #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 001\n" + "~"*28)
     return citychoice, monthchoice, daychoice
 
-
+    #loads day and month into df
 def load_data(citychoice, monthchoice, daychoice):
     global validmonth
     global validcity
@@ -163,17 +156,6 @@ def load_data(citychoice, monthchoice, daychoice):
         print("Congratulations!  You broke the program(monthchoice)!")
 
 
-    """
-    Loads data for the specified city and filters by month and day if applicable.
-
-    Args:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
-    Returns:
-        df - Pandas DataFrame containing city data filtered by month and day
-    """
-
         #Load chosen csv and get month and day in new columns
     df = pd.read_csv(CITY_DATA[citychoice])
     df["Start Time"] = pd.to_datetime(df["Start Time"])
@@ -191,9 +173,8 @@ def load_data(citychoice, monthchoice, daychoice):
     #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 002\n" + "~"*28)
     return df
 
-
+    #dispays travel stats
 def time_stats(df):
-    """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
@@ -250,9 +231,8 @@ def time_stats(df):
 
     #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 003\n" + "~"*28)
 
-
+    #displays station stats
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -275,9 +255,8 @@ def station_stats(df):
 
     #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 004\n" + "~"*28)
 
-
+    #dispays trip stats
 def trip_duration_stats(df):
-    """Displays statistics on the total and average trip duration."""
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
@@ -299,7 +278,7 @@ def trip_duration_stats(df):
     #print("~"*28 + "\nCODE HAS NOT BROKEN YET! 005\n" + "~"*28)
 
 
-
+    #displays demographic user info
 def user_stats(df):
     global citycity
     """Displays statistics on bikeshare users."""
@@ -350,6 +329,6 @@ def main():
             break
 
 
-
+        #python needs this... i don't quite get why
 if __name__ == "__main__":
 	main()
